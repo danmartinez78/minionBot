@@ -34,6 +34,14 @@ class MinionArm:
         time.sleep(2)
         # self.swift.set_buzzer(frequency=1000, duration=0.5, wait=True)
 
+    def downward_home(self):
+        print("going home")
+        self.swift.set_position(x = 150 , speed = self.speed * 0.5, wait=True)
+        self.swift.set_position(x = 125 , y = 0, speed = self.speed * 0.5, wait=True)
+        self.move(125, 0, 40, self.speed * 0.5)
+        time.sleep(2)
+        self.swift.set_buzzer(frequency=1000, duration=0.5)
+
 
     def move(self, x, y, z, speed):
         self.swift.set_position(x, y, z, speed, wait=True)
