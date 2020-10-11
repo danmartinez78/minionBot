@@ -20,15 +20,13 @@ bot = commands.Bot(
 myarm.flip()
 myarm.flip()
 
-
-
 @bot.event
 async def event_ready():
     'Called once when the bot goes online.'
     print(f"{os.environ['BOT_NICK']} is online!")
     ws = bot._ws  # this is only needed to send messages within event_ready
     myarm.home()
-    await ws.send_privmsg(os.environ['CHANNEL'], f"/me has landed!")
+    await ws.send_privmsg(os.environ['CHANNEL'], f"/me has been activated!")
 
 @bot.event
 async def event_message(ctx):
@@ -43,8 +41,6 @@ async def event_message(ctx):
     if 'hello' in ctx.content.lower():
         await ctx.channel.send(f"Hi, @{ctx.author.name}!")
 
-    
-
 @bot.command(name='test')
 async def test(ctx):
     await ctx.send('test passed!')
@@ -53,10 +49,17 @@ async def test(ctx):
 async def flip(ctx):
     await ctx.send('Flipping, please wait...')
     myarm.flip()
-    time.sleep(2)
-    await ctx.send('Done!')
+    await ctx.send('Behold! The Gaussian Distribution!')
+    myarm.flip()
+    await ctx.send('Done! Ready for next demonstration!')
 
-
+@bot.command(name='info')
+async def info(ctx):
+    await ctx.send('The Galton Board, is a device invented by Sir Francis Galton to demonstrate the central limit theorem!')
+    time.sleep(3)
+    await ctx.send('My creator, roboticdaniel, has tasked me to flip the Galton Board at your command!')
+    time.sleep(3)
+    await ctx.send('Type !flip to flip the Galton Board.')
 
 if __name__ == "__main__":
     bot.run()

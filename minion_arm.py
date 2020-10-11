@@ -64,11 +64,11 @@ class MinionArm:
     def flip_right(self):
         self.move(180, 0, 150, self.speed)
         self.move(220, -10, 150, self.speed)
-        self.move(220, -20, 140, self.speed*.8)
-        self.move(220, -40, 130, self.speed*.8)
-        self.move(220, -50, 110, self.speed*.8)
-        self.move(220, -60, 100, self.speed*.8)
-        self.move(220, -60, 30, self.speed*.8)
+        self.move(220, -20, 140, self.speed*.5)
+        self.move(220, -40, 130, self.speed*.5)
+        self.move(220, -50, 110, self.speed*.5)
+        self.move(220, -60, 100, self.speed*.5)
+        self.move(220, -60, 30, self.speed*.5)
         time.sleep(2)
     
     def disconnect(self):
